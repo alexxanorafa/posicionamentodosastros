@@ -161,7 +161,7 @@
         <p class="planet-position" id="sunPosition">Sol: A calcular...</p>
         <p class="planet-position" id="moonPosition">Lua: A calcular...</p>
         <p class="planet-position" id="mercuryPosition">Mercúrio: A calcular...</p>
-        <p class="planet-position" id="venusPosition">Vênus: A calcular...</p>
+        <p class="planet-position" id="venusPosition">Vénus: A calcular...</p>
         <p class="planet-position" id="marsPosition">Marte: A calcular...</p>
 
         <div id="philosophical-reflection"></div>
@@ -175,11 +175,11 @@
 
   <script>
     const planetSignificance = {
-      "Sol": { "Áries": "Energia e liderança forte.", "Leão": "Confiança e criatividade." },
-      "Lua": { "Áries": "Impulsividade emocional.", "Leão": "Emoções intensas e orgulhosas." },
-      "Mercúrio": { "Áries": "Pensamento rápido e direto.", "Aquário": "Ideias inovadoras e excêntricas." },
-      "Vênus": { "Câncer": "Afeto e proteção.", "Touro": "Sensualidade e estabilidade." },
-      "Marte": { "Câncer": "Ação protetora e defensiva.", "Áries": "Impulsividade e agressividade." }
+      "Sol": { "Carneiro": "Energia e liderança forte.", "Leão": "Confiança e criatividade." },
+      "Lua": { "Carneiro": "Impulsividade emocional.", "Leão": "Emoções intensas e orgulhosas." },
+      "Mercúrio": { "Carneiro": "Pensamento rápido e direto.", "Aquário": "Ideias inovadoras e excêntricas." },
+      "Vénus": { "Caranguejo": "Afeto e proteção.", "Touro": "Sensualidade e estabilidade." },
+      "Marte": { "Caranguejo": "Ação protetora e defensiva.", "Carneiro": "Impulsividade e agressividade." }
     };
 
     function getSignificance(planet, sign) {
@@ -189,7 +189,7 @@
     function generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign) {
       return `
         Cada planeta representa uma parte de nossa jornada existencial. O Sol, no signo de ${sunSign}, traz o brilho da energia vital, nos guiando com uma luz própria. A Lua em ${moonSign} reflete as profundezas de nossa alma, com suas emoções e instintos. Mercúrio, em ${mercurySign}, nos conecta com a sabedoria do universo, canalizando pensamentos rápidos e criativos.
-        Vênus em ${venusSign} nos ensina a arte do amor e da beleza, enquanto Marte, em ${marsSign}, desperta a coragem e a ação. Juntos, eles constroem a tapeçaria complexa que é nossa existência. Siga este caminho de autoconhecimento com coragem e clareza, pois os astros sempre estarão ao seu lado.`;
+        Vénus em ${venusSign} nos ensina a arte do amor e da beleza, enquanto Marte, em ${marsSign}, desperta a coragem e a ação. Juntos, eles constroem a tapeçaria complexa que é nossa existência. Siga este caminho de autoconhecimento com coragem e clareza, pois os astros sempre estarão ao seu lado.`;
     }
 
     document.getElementById('submitBtn').addEventListener('click', function () {
@@ -211,7 +211,7 @@
         return position;
       }
 
-      const signs = ["Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"];
+      const signs = ["Carneiro", "Touro", "Gémeos", "Caranguejo", "Leão", "Virgem", "Balança", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"];
       function getSignFromPosition(position) {
         const signIndex = Math.floor(position / 30);
         return signs[signIndex];
@@ -235,7 +235,7 @@
       document.getElementById('sunPosition').textContent = `Sol: ${sunPosition}° em ${sunSign} - ${getSignificance("Sol", sunSign)}`;
       document.getElementById('moonPosition').textContent = `Lua: ${moonPosition}° em ${moonSign} - ${getSignificance("Lua", moonSign)}`;
       document.getElementById('mercuryPosition').textContent = `Mercúrio: ${mercuryPosition}° em ${mercurySign} - ${getSignificance("Mercúrio", mercurySign)}`;
-      document.getElementById('venusPosition').textContent = `Vênus: ${venusPosition}° em ${venusSign} - ${getSignificance("Vênus", venusSign)}`;
+      document.getElementById('venusPosition').textContent = `Vénus: ${venusPosition}° em ${venusSign} - ${getSignificance("Vénus", venusSign)}`;
       document.getElementById('marsPosition').textContent = `Marte: ${marsPosition}° em ${marsSign} - ${getSignificance("Marte", marsSign)}`;
       document.getElementById('philosophical-reflection').textContent = generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign);
 
