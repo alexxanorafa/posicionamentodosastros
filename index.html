@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo Astronômico</title>
+  <title>Jogo Astronômico - Mapa Astral</title>
   <meta name="description" content="Descubra o significado dos planetas e o posicionamento dos astros com um design futurista e elegante.">
   <style>
-    /* Global Styles */
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
@@ -31,7 +30,6 @@
       margin-bottom: 20px;
     }
 
-    /* Form Styles */
     .form-container {
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 10px;
@@ -74,7 +72,6 @@
       background-color: #2980b9;
     }
 
-    /* Result Styles */
     .result-container {
       margin-top: 30px;
       background-color: rgba(0, 0, 0, 0.8);
@@ -109,7 +106,7 @@
 <body>
 
   <header>
-    <h1>Jogo Astronômico</h1>
+    <h1>Jogo Astronômico - Mapa Astral</h1>
   </header>
 
   <main>
@@ -120,7 +117,7 @@
       <label for="birthtime">Hora de Nascimento:</label>
       <input type="time" id="birthtime" required>
 
-      <button id="submitBtn">Descobrir Posicionamento dos Astros</button>
+      <button id="submitBtn">Descobrir Mapa Astral</button>
     </div>
 
     <div class="result-container" id="result" style="display: none;">
@@ -138,59 +135,64 @@
   </footer>
 
   <script>
+    const planetSignificance = {
+      "Sol": { "Áries": "Energia e liderança forte.", "Leão": "Confiança e criatividade." },
+      "Lua": { "Áries": "Impulsividade emocional.", "Leão": "Emoções intensas e orgulhosas." },
+      "Mercúrio": { "Áries": "Pensamento rápido e direto.", "Aquário": "Ideias inovadoras e excêntricas." },
+      "Vênus": { "Câncer": "Afeto e proteção.", "Touro": "Sensualidade e estabilidade." },
+      "Marte": { "Câncer": "Ação protetora e defensiva.", "Áries": "Impulsividade e agressividade." }
+    };
+
+    function getSignificance(planet, sign) {
+      return planetSignificance[planet]?.[sign] || "Significado em desenvolvimento.";
+    }
+
     document.getElementById('submitBtn').addEventListener('click', function () {
       const birthdate = document.getElementById('birthdate').value;
       const birthtime = document.getElementById('birthtime').value;
 
-      if (birthdate && birthtime) {
-        const birthDateTime = new Date(birthdate + "T" + birthtime);
-
-        const referenceDate = new Date("2000-01-01T00:00:00Z");
-        const daysSinceReference = Math.floor((birthDateTime - referenceDate) / (1000 * 60 * 60 * 24));
-
-        function calculateSunPosition(days) {
-          const solarConstant = 360 / 365.25;
-          return (solarConstant * days) % 360;
-        }
-
-        function calculateMoonPosition(days) {
-          const lunarCycle = 27.3;
-          const lunarConstant = 360 / lunarCycle;
-          return (lunarConstant * days) % 360;
-        }
-
-        function calculateMercuryPosition(days) {
-          const mercuryCycle = 88;
-          const mercuryConstant = 360 / mercuryCycle;
-          return (mercuryConstant * days) % 360;
-        }
-
-        function calculateVenusPosition(days) {
-          const venusCycle = 225;
-          const venusConstant = 360 / venusCycle;
-          return (venusConstant * days) % 360;
-        }
-
-        function calculateMarsPosition(days) {
-          const marsCycle = 687;
-          const marsConstant = 360 / marsCycle;
-          return (marsConstant * days) % 360;
-        }
-
-        const sunPosition = calculateSunPosition(daysSinceReference).toFixed(2);
-        const moonPosition = calculateMoonPosition(daysSinceReference).toFixed(2);
-        const mercuryPosition = calculateMercuryPosition(daysSinceReference).toFixed(2);
-        const venusPosition = calculateVenusPosition(daysSinceReference).toFixed(2);
-        const marsPosition = calculateMarsPosition(daysSinceReference).toFixed(2);
-
-        document.getElementById('sunPosition').textContent = `Sol: ${sunPosition}°`;
-        document.getElementById('moonPosition').textContent = `Lua: ${moonPosition}°`;
-        document.getElementById('mercuryPosition').textContent = `Mercúrio: ${mercuryPosition}°`;
-        document.getElementById('venusPosition').textContent = `Vênus: ${venusPosition}°`;
-        document.getElementById('marsPosition').textContent = `Marte: ${marsPosition}°`;
-
-        document.getElementById('result').style.display = 'block';
+      if (!birthdate || !birthtime) {
+        alert("Por favor, insira uma data e hora válidas.");
+        return;
       }
+
+      const birthDateTime = new Date(birthdate + "T" + birthtime);
+      const referenceDate = new Date("2000-01-01T00:00:00Z");
+      const daysSinceReference = Math.floor((birthDateTime - referenceDate) / (1000 * 60 * 60 * 24));
+
+      function calculatePlanetPosition(days, cycleLength) {
+        let position = (360 / cycleLength) * days;
+        position = ((position % 360) + 360) % 360;
+        return position;
+      }
+
+      const signs = ["Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"];
+      function getSignFromPosition(position) {
+        const signIndex = Math.floor(position / 30);
+        return signs[signIndex];
+      }
+
+      const sunPosition = calculatePlanetPosition(daysSinceReference, 365.25).toFixed(2);
+      const sunSign = getSignFromPosition(sunPosition);
+
+      const moonPosition = calculatePlanetPosition(daysSinceReference, 27.3).toFixed(2);
+      const moonSign = getSignFromPosition(moonPosition);
+
+      const mercuryPosition = calculatePlanetPosition(daysSinceReference, 87.97).toFixed(2);
+      const mercurySign = getSignFromPosition(mercuryPosition);
+
+      const venusPosition = calculatePlanetPosition(daysSinceReference, 224.7).toFixed(2);
+      const venusSign = getSignFromPosition(venusPosition);
+
+      const marsPosition = calculatePlanetPosition(daysSinceReference, 686.98).toFixed(2);
+      const marsSign = getSignFromPosition(marsPosition);
+
+      document.getElementById('sunPosition').textContent = `Sol: ${sunPosition}° em ${sunSign} - ${getSignificance("Sol", sunSign)}`;
+      document.getElementById('moonPosition').textContent = `Lua: ${moonPosition}° em ${moonSign} - ${getSignificance("Lua", moonSign)}`;
+      document.getElementById('mercuryPosition').textContent = `Mercúrio: ${mercuryPosition}° em ${mercurySign} - ${getSignificance("Mercúrio", mercurySign)}`;
+      document.getElementById('venusPosition').textContent = `Vênus: ${venusPosition}° em ${venusSign} - ${getSignificance("Vênus", venusSign)}`;
+      document.getElementById('marsPosition').textContent = `Marte: ${marsPosition}° em ${marsSign} - ${getSignificance("Marte", marsSign)}`;
+      document.getElementById('result').style.display = 'block';
     });
   </script>
 
