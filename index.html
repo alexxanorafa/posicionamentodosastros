@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo Astronômico - Mapa Astral</title>
-  <meta name="description" content="Descubra os significados dos planetas e o posicionamento dos astros com um design futurista e elegante.">
+  <title>Exploração do Mapa Astral</title>
+  <meta name="description" content="Descubra os significados dos planetas e o posicionamento dos astros.">
   <meta name="keywords" content="mapa astral, astrologia, signos, planetas, cosmos, horóscopo">
-  <meta name="author" content="Seu Nome">
+  <meta name="author" content="Alexandre Ventura">
 
   <style>
     body {
@@ -15,23 +15,32 @@
       text-align: center;
       padding: 20px;
       margin: 0;
-      background-color: #f8f8f8;
+      background: url('https://images.unsplash.com/photo-1533010742187-89b3e1574f58?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZvcmVzdHxlbnwwfHx8fDE2Nzg1NzI2NDY&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+      background-size: cover;
+      color: #ecf0f1;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     h1 {
-      color: #2c3e50;
-      font-size: 2.5em;
-      margin-top: 50px;
+      color: #d4b192;
+      font-size: 3em;
+      font-family: 'Arial Black', sans-serif;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     h2 {
-      color: #2c3e50;
+      color: #ecf0f1;
       font-size: 1.8em;
       margin-top: 20px;
     }
 
     p {
-      color: #555;
+      color: #d4b192;
     }
 
     header,
@@ -40,65 +49,55 @@
       margin: 20px 0;
     }
 
-    /* Barras laterais fixas */
-    #left-bar,
-    #right-bar {
-      position: fixed;
-      top: 0;
-      height: 100%;
-      width: 10%;
-      background-color: #34495e;
-      z-index: -1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
     }
 
-    #left-bar {
-      left: 0;
+    input[type="date"], input[type="time"] {
+      width: 250px;
+      text-align: center;
     }
 
-    #right-bar {
-      right: 0;
+    button {
+      background-color: #3498db;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
     }
 
-    .content {
-      z-index: 1;
-      background-color: #ecf0f1;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    button:hover {
+      background-color: #2980b9;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
+      transform: scale(1.05);
     }
 
-    /* Estilo para os planetas e resultados */
     .result-container {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 15px;
       margin-top: 30px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      border: 2px solid #ecf0f1;
+      opacity: 0;
+      animation: fadeInResults 1s forwards;
+    }
+
+    @keyframes fadeInResults {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     .planet-position {
       font-size: 1.5em;
       color: #fff;
       margin-bottom: 15px;
-    }
-
-    /* Estilo de botões */
-    button {
-      background-color: #3498db;
-      color: #fff;
-      padding: 12px 25px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #2980b9;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
     }
 
     footer {
@@ -107,20 +106,32 @@
       font-size: 0.9em;
     }
 
+    #philosophical-reflection {
+      margin-top: 30px;
+      font-size: 1.2em;
+      font-style: italic;
+      color: #ecf0f1;
+      text-align: left;
+      line-height: 1.6;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }
+
     /* Responsividade */
     @media (max-width: 600px) {
-      .content {
-        padding: 10px;
-      }
-      
-      h1 {
-        font-size: 2em;
-      }
-      
-      button {
+      input, button {
         width: 100%;
-        font-size: 1em;
-        padding: 10px;
       }
     }
   </style>
@@ -129,7 +140,8 @@
 <body>
 
   <header>
-    <h1>Jogo Astronômico - Mapa Astral</h1>
+    <h1>Mapa Astral</h1>
+    <h2>Descubra a influência dos astros sobre sua personalidade</h2>
   </header>
 
   <main>
@@ -151,12 +163,14 @@
         <p class="planet-position" id="mercuryPosition">Mercúrio: A calcular...</p>
         <p class="planet-position" id="venusPosition">Vênus: A calcular...</p>
         <p class="planet-position" id="marsPosition">Marte: A calcular...</p>
+
+        <div id="philosophical-reflection"></div>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 Jogo Astronômico - Descubra os Astros do Seu Destino</p>
+    <p>© 2025 Descubra os Astros do Seu Destino</p>
   </footer>
 
   <script>
@@ -170,6 +184,12 @@
 
     function getSignificance(planet, sign) {
       return planetSignificance[planet]?.[sign] || "Significado em desenvolvimento.";
+    }
+
+    function generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign) {
+      return `
+        Cada planeta representa uma parte de nossa jornada existencial. O Sol, no signo de ${sunSign}, traz o brilho da energia vital, nos guiando com uma luz própria. A Lua em ${moonSign} reflete as profundezas de nossa alma, com suas emoções e instintos. Mercúrio, em ${mercurySign}, nos conecta com a sabedoria do universo, canalizando pensamentos rápidos e criativos.
+        Vênus em ${venusSign} nos ensina a arte do amor e da beleza, enquanto Marte, em ${marsSign}, desperta a coragem e a ação. Juntos, eles constroem a tapeçaria complexa que é nossa existência. Siga este caminho de autoconhecimento com coragem e clareza, pois os astros sempre estarão ao seu lado.`;
     }
 
     document.getElementById('submitBtn').addEventListener('click', function () {
@@ -217,6 +237,8 @@
       document.getElementById('mercuryPosition').textContent = `Mercúrio: ${mercuryPosition}° em ${mercurySign} - ${getSignificance("Mercúrio", mercurySign)}`;
       document.getElementById('venusPosition').textContent = `Vênus: ${venusPosition}° em ${venusSign} - ${getSignificance("Vênus", venusSign)}`;
       document.getElementById('marsPosition').textContent = `Marte: ${marsPosition}° em ${marsSign} - ${getSignificance("Marte", marsSign)}`;
+      document.getElementById('philosophical-reflection').textContent = generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign);
+
       document.getElementById('result').style.display = 'block';
     });
   </script>
