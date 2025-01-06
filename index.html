@@ -32,10 +32,22 @@
       font-family: 'Arial Black', sans-serif;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     }
-    .menu-item {
+   /* Container do menu */
+.menu {
+  display: flex; /* Usar flexbox para alinhar os itens horizontalmente */
+  justify-content: center; /* Centraliza os itens no eixo horizontal */
+  align-items: center; /* Alinha os itens no centro do eixo vertical */
+  gap: 15px; /* Espaçamento entre os itens */
+  padding: 10px 0; /* Espaçamento superior e inferior para o contêiner */
+  width: 100%; /* Garantir que o container ocupe toda a largura da tela */
+  position: relative; /* Para garantir o controle total da posição do menu */
+}
+
+/* Estilo de cada item do menu */
+.menu-item {
   background-color: #ecf0f1; /* Cor original */
-  border-radius: 8px; /* Bordas mais arredondadas para um toque mais suave */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave, mas perceptível */
+  border-radius: 8px; /* Bordas arredondadas para um toque mais suave */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
   width: 100px; /* Largura discreta */
   height: 40px; /* Altura mais discreta */
   display: flex;
@@ -44,8 +56,8 @@
   text-decoration: none;
   color: #2c3e50; /* Cor original do texto */
   font-size: 0.9em; /* Fonte um pouco menor e discreta */
-  font-weight: 500; /* Fonte com peso médio para uma aparência mais limpa */
-  transition: all 0.3s ease; /* Transições suaves para todos os efeitos */
+  font-weight: 500; /* Fonte com peso médio */
+  transition: all 0.3s ease; /* Transições suaves */
   padding: 0 10px; /* Espaçamento lateral para garantir que o texto não fique colado às bordas */
   cursor: pointer; /* Deixar o cursor de ponteiro para melhorar a interação */
   text-align: center; /* Garantir que o texto esteja bem posicionado */
@@ -53,7 +65,7 @@
 
 .menu-item:hover {
   transform: scale(1.05); /* Efeito de hover suave */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra um pouco mais forte no hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave no hover */
   background-color: #bdc3c7; /* Cor original do hover */
   color: #fff; /* Mudar a cor do texto para branco no hover */
 }
@@ -80,6 +92,7 @@
     font-size: 0.8em; /* Tamanho da fonte ainda menor */
   }
 }
+
     h2 {
       color: #ecf0f1;
       font-size: 1.8em;
