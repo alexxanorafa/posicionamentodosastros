@@ -21,7 +21,7 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    @keyframes fadeIn {
+    @keyframes none {
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
@@ -32,64 +32,74 @@
       font-family: 'Arial Black', sans-serif;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     }
-   /* Container do menu */
+    /* Contêiner do menu */
 .menu {
-  display: flex; /* Usar flexbox para alinhar os itens horizontalmente */
-  justify-content: center; /* Centraliza os itens no eixo horizontal */
-  align-items: center; /* Alinha os itens no centro do eixo vertical */
-  gap: 15px; /* Espaçamento entre os itens */
-  padding: 10px 0; /* Espaçamento superior e inferior para o contêiner */
-  width: 100%; /* Garantir que o container ocupe toda a largura da tela */
-  position: relative; /* Para garantir o controle total da posição do menu */
-}
-
-/* Estilo de cada item do menu */
-.menu-item {
-  background-color: #ecf0f1; /* Cor original */
-  border-radius: 8px; /* Bordas arredondadas para um toque mais suave */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  width: 100px; /* Largura discreta */
-  height: 40px; /* Altura mais discreta */
   display: flex;
-  align-items: center;
+  flex-wrap: wrap; /* Permite a quebra de linha se necessário */
   justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Lista do menu */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px; /* Espaço entre os itens */
+  flex-wrap: wrap; /* Permite a quebra de linha */
+  justify-content: center; /* Centraliza os itens */
+}
+
+/* Estilo para os itens do menu */
+.menu-item {
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 40px;
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  justify-content: center; /* Alinha horizontalmente */
   text-decoration: none;
-  color: #2c3e50; /* Cor original do texto */
-  font-size: 0.9em; /* Fonte um pouco menor e discreta */
-  font-weight: 500; /* Fonte com peso médio */
-  transition: all 0.3s ease; /* Transições suaves */
-  padding: 0 10px; /* Espaçamento lateral para garantir que o texto não fique colado às bordas */
-  cursor: pointer; /* Deixar o cursor de ponteiro para melhorar a interação */
-  text-align: center; /* Garantir que o texto esteja bem posicionado */
+  color: #2c3e50;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0 15px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap; /* Impede a quebra de linha dentro do botão */
+  overflow: hidden; /* Impede que o texto ultrapasse o botão */
+  text-overflow: ellipsis; /* Coloca "..." no final se o texto for longo */
 }
 
+/* Efeito hover no item do menu */
 .menu-item:hover {
-  transform: scale(1.05); /* Efeito de hover suave */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave no hover */
-  background-color: #bdc3c7; /* Cor original do hover */
-  color: #fff; /* Mudar a cor do texto para branco no hover */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #bdc3c7;
+  color: #fff;
 }
 
-.menu-item:active {
-  transform: scale(0.98); /* Efeito de clique, para dar um feedback visual */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave no clique */
-}
+/* Ajustes para tornar o menu responsivo */
 
-/* Ajustes para telas menores */
+/* Quando a tela for menor que 768px */
 @media (max-width: 768px) {
   .menu-item {
-    width: 90px; /* Diminuir a largura */
-    height: 35px; /* Diminuir a altura */
-    font-size: 0.85em; /* Ajustar o tamanho da fonte */
+    height: 35px;
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+    padding: 0 12px; /* Ajusta o padding */
   }
 }
 
-/* Para telas muito pequenas */
+/* Quando a tela for menor que 480px */
 @media (max-width: 480px) {
   .menu-item {
-    width: 80px; /* Largura ainda menor */
-    height: 30px; /* Altura ainda menor */
-    font-size: 0.8em; /* Tamanho da fonte ainda menor */
+    height: 30px;
+    font-size: 0.8em; /* Reduz mais o tamanho da fonte */
+    padding: 0 10px; /* Ajuste no padding */
   }
 }
 
