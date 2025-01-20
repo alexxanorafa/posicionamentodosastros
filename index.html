@@ -32,89 +32,78 @@
       font-family: 'Arial Black', sans-serif;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     }
-/* Contêiner do menu */
+/* Estilo do menu */
 .menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-  width: 100%;
-  background-color: #f8f8f8; /* Fundo neutro */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    width: 100%;
+    background: transparent; /* Remove o fundo específico */
+    box-shadow: transparent; /* Remove o box-shadow */
 }
 
-.menu:hover {
-  background-color: #ecf0f1; /* Fundo mais escuro no hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Realce na sombra */
-}
-
-/* Lista do menu */
 .menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 14px; /* Espaço entre os itens */
-  flex-wrap: wrap;
-  justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* Estilo para os itens do menu */
 .menu-item {
-  background-color: #ecf0f1; /* Fundo padrão do botão */
-  border-radius: 8px; /* Bordas arredondadas mais elegantes */
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: #2c3e50; /* Cor do texto */
-  font-size: 0.95em;
-  font-weight: 500;
-  padding: 0 16px;
-  cursor: pointer;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
-  position: relative;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    background-color: transparent;
+    border-radius: 4px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 0.75em;
+    font-weight: 250;
+    padding: 0 8px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 1px 2px transparent;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-/* Efeito hover no item do menu */
 .menu-item:hover {
-  background-color: #97a6b6; /* Fundo mais escuro */
-  color: #f8f8f8; /* Texto claro no hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra mais intensa */
-  transform: translateY(-2px); /* Elevação sutil */
+    background-color: #97a6b6;
+    color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
-
 /* Efeito de foco */
 .menu-item:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.3); /* Destaque sutil */
-  background-color: #97a6b6; /* Fundo escuro */
-  color: #ecf0f1; /* Texto claro */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.3); /* Destaque sutil */
+    background-color: #97a6b6; /* Fundo escuro */
+    color: #ecf0f1; /* Texto claro */
 }
 
-/* Linha inferior dinâmica */
 .menu-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background-color: #d4b192; /* Cor dourada */
-  transition: width 0.3s ease, left 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #d4b192;
+    transition: width 0.3s ease, left 0.3s ease;
 }
 
 .menu-item:hover::after {
-  width: 100%;
-  left: 0;
+    width: 100%;
+    left: 0;
 }
 
 /* Ajustes para tornar o menu responsivo */
