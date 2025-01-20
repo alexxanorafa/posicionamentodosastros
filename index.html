@@ -106,26 +106,26 @@
     left: 0;
 }
 
-/* Ajustes para tornar o menu responsivo */
+/* Ajustes responsivos */
 @media (max-width: 768px) {
-  .menu-item {
-    height: 35px;
-    font-size: 0.9em;
-    padding: 0 12px;
-  }
+    .menu-item {
+        height: 25px; /* Reduz altura */
+        font-size: 0.8em; /* Fonte menor */
+        padding: 0 6px; /* Padding reduzido */
+    }
 }
 
 @media (max-width: 480px) {
-  .menu-list {
-    flex-direction: column; /* Empilha os itens no mobile */
-    gap: 12px;
-  }
+    .menu-list {
+        flex-direction: row; /* Empilha os itens */
+        gap: 2px; /* Espaçamento menor */
+    }
 
-  .menu-item {
-    height: 30px;
-    font-size: 0.85em;
-    padding: 0 10px;
-  }
+    .menu-item {
+        height: 20px; /* Altura mais compacta */
+        font-size: 0.55em; /* Fonte menor */
+        padding: 0 3px; /* Padding ainda menor */
+    }
 }
 
     h2 {
