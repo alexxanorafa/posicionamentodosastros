@@ -6,7 +6,7 @@ body {
     padding: 20px;
     margin: 0;
     color: #d4b192;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
   }
   
   @keyframes fadeIn {
