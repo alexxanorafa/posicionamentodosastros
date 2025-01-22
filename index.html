@@ -8,228 +8,7 @@
   <meta name="description" content="Descubra os significados dos planetas e o posicionamento dos astros.">
   <meta name="keywords" content="mapa astral, astrologia, signos, planetas, cosmos, horóscopo">
   <meta name="author" content="Alexandre Ventura">
-
-  <style>
-    body {
-      font-family: 'Times New Roman', serif;
-      text-align: center;
-      padding: 20px;
-      margin: 0;
-      background: url('https://images.unsplash.com/photo-1533010742187-89b3e1574f58?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZvcmVzdHxlbnwwfHx8fDE2Nzg1NzI2NDY&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
-      background-size: cover;
-      color: #d4b192;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes none {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-h1 {
-    color: #d4b192;
-    font-size: 2.0em;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px #2c3e50;
-}
-/* Estilo do menu */
-.menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 0;
-    width: 100%;
-    background: transparent; /* Remove o fundo específico */
-    box-shadow: transparent; /* Remove o box-shadow */
-}
-
-.menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.menu-item {
-    background-color: transparent;
-    border-radius: 4px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #2c3e50;
-    font-size: 0.75em;
-    font-weight: 250;
-    padding: 0 8px;
-    cursor: pointer;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: 0 1px 2px transparent;
-    position: relative;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.menu-item:hover {
-    background-color: #2c3e50;
-    color: #d4b192;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-/* Efeito de foco */
-.menu-item:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.3); /* Destaque sutil */
-    background-color: #97a6b6; /* Fundo escuro */
-    color: #ecf0f1; /* Texto claro */
-}
-
-.menu-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: #d4b192;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-.menu-item:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .menu-item {
-        height: 25px; /* Reduz altura */
-        font-size: 0.8em; /* Fonte menor */
-        padding: 0 6px; /* Padding reduzido */
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-list {
-        flex-direction: row; /* Empilha os itens */
-        gap: 2px; /* Espaçamento menor */
-    }
-
-    .menu-item {
-        height: 20px; /* Altura mais compacta */
-        font-size: 0.55em; /* Fonte menor */
-        padding: 0 3px; /* Padding ainda menor */
-    }
-}
-
-    h2 {
-      color: #ecf0f1;
-      font-size: 1.8em;
-      margin-top: 20px;
-    }
-
-    p {
-      color: #d4b192;
-    }
-
-    header,
-    main,
-    footer {
-      margin: 20px 0;
-    }
-
-    input, button {
-      padding: 10px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      margin-top: 20px;
-      transition: all 0.3s ease;
-    }
-
-    input[type="date"], input[type="time"], select {
-      width: 250px;
-      text-align: center;
-    }
-
-    button {
-      background-color: #d4b192;
-      color: #2c3e50;
-      cursor: pointer;
-      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #2980b9;
-      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
-      transform: scale(1.05);
-    }
-
-    .result-container {
-      background-color: #2c3e50;
-      padding: 20px;
-      border-radius: 15px;
-      margin-top: 30px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-      border: 2px solid #ecf0f1;
-      opacity: 0;
-      animation: fadeInResults 1s forwards;
-    }
-
-    @keyframes fadeInResults {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    .planet-position {
-      font-size: 1.5em;
-      color: #fff;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-    }
-
-    footer {
-      margin-top: 30px;
-      color: #555;
-      font-size: 0.9em;
-    }
-
-    #philosophical-reflection {
-      margin-top: 30px;
-      font-size: 1.2em;
-      font-style: italic;
-      color: #ecf0f1;
-      text-align: left;
-      line-height: 1.6;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-    }
-
-    .form-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 50px;
-      background-color: #2c3e50;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-    }
-
-    /* Responsividade */
-    @media (max-width: 600px) {
-      input, button, select {
-        width: 100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -248,367 +27,289 @@ h1 {
 
   <main>
     <div class="content">
-      <div class="form-container">
-        <label for="birthdate">Data de Nascimento:</label>
-        <input type="date" id="birthdate" required>
+      <!-- Formulário com ID e ajustes para os campos -->
+      <form id="birth-form">
+        <div class="form-container">
+          <label for="birthdate">Data de Nascimento:</label>
+          <input type="date" id="birthdate" name="birthdate" required>
 
-        <label for="birthtime">Hora de Nascimento:</label>
-        <input type="time" id="birthtime" required>
+          <label for="birthtime">Hora de Nascimento:</label>
+          <input type="time" id="birthtime" name="birthtime" required>
 
-        <label for="birthcity">Cidade de Nascimento:</label>
-        <select id="birthcity" required>
-          <option value="Lisboa" data-lat="38.7169" data-lon="-9.1395">Lisboa</option>
-                    <option value="Porto" data-lat="41.1496" data-lon="-8.6110">Porto</option>
-                    <option value="Amadora" data-lat="38.7333" data-lon="-9.2333">Amadora</option>
-                    <option value="Braga" data-lat="41.5503" data-lon="-8.4265">Braga</option>
-                    <option value="Coimbra" data-lat="40.2033" data-lon="-8.4103">Coimbra</option>
-                    <option value="Aveiro" data-lat="40.6405" data-lon="-8.6538">Aveiro</option>
-                    <option value="Viseu" data-lat="40.6613" data-lon="-7.9092">Viseu</option>
-                    <option value="Évora" data-lat="38.5715" data-lon="-7.9135">Évora</option>
-                    <option value="Funchal" data-lat="32.6669" data-lon="-16.9243">Funchal</option>
-                    <option value="Leiria" data-lat="39.7439" data-lon="-8.8075">Leiria</option>
-                    <option value="Santarém" data-lat="39.2368" data-lon="-8.6871">Santarém</option>
-                    <option value="Albufeira" data-lat="37.0194" data-lon="-8.2437">Albufeira</option>
-                    <option value="Guimarães" data-lat="41.4477" data-lon="-8.6110">Guimarães</option>
-                    <option value="Viana do Castelo" data-lat="41.6922" data-lon="-8.8290">Viana do Castelo</option>
-                    <option value="Cascais" data-lat="38.6979" data-lon="-9.4216">Cascais</option>
-                    <option value="Oeiras" data-lat="38.6970" data-lon="-9.2998">Oeiras</option>
-                    <option value="Ponta Delgada" data-lat="37.7411" data-lon="-25.6756">Ponta Delgada</option>
-                    <option value="Tavira" data-lat="37.5713" data-lon="-7.6120">Tavira</option>
-                    <option value="Bragança" data-lat="41.8055" data-lon="-6.7574">Bragança</option>
-                    <option value="Barcelos" data-lat="41.5407" data-lon="-8.6110">Barcelos</option>
-                    <option value="Vila Real" data-lat="41.3009" data-lon="-7.7443">Vila Real</option>
-                    <option value="Celorico da Beira" data-lat="40.5971" data-lon="-7.6299">Celorico da Beira</option>
-                    <option value="Sines" data-lat="37.9507" data-lon="-8.8693">Sines</option>
-                    <option value="Caldas da Rainha" data-lat="39.4069" data-lon="-9.1333">Caldas da Rainha</option>
-                    <option value="Montijo" data-lat="38.6894" data-lon="-8.9812">Montijo</option>
-                    <option value="Ovar" data-lat="40.9653" data-lon="-8.5954">Ovar</option>
-                    <option value="Fafe" data-lat="41.4311" data-lon="-8.3666">Fafe</option>
-                    <option value="Póvoa de Varzim" data-lat="41.3795" data-lon="-8.7858">Póvoa de Varzim</option>
-                    <option value="Maia" data-lat="41.1669" data-lon="-8.6200">Maia</option>
-                    <option value="Barreiro" data-lat="38.6333" data-lon="-9.0667">Barreiro</option>
-                    <option value="Funchal" data-lat="32.6669" data-lon="-16.9243">Funchal</option>
-                    <option value="Seixal" data-lat="38.5911" data-lon="-9.0989">Seixal</option>
-                    <option value="Sintra" data-lat="38.8028" data-lon="-9.3818">Sintra</option>
-                    <option value="Valongo" data-lat="41.1667" data-lon="-8.9000">Valongo</option>
-                    <option value="Alcobaça" data-lat="39.6031" data-lon="-8.5739">Alcobaça</option>
-                    <option value="Angra do Heroísmo" data-lat="38.6634" data-lon="-27.2217">Angra do Heroísmo</option>
-                    <option value="Olhão" data-lat="37.1400" data-lon="-7.8475">Olhão</option>
-                    <option value="Amadora" data-lat="38.7333" data-lon="-9.2333">Amadora</option>
-                    <option value="Marinha Grande" data-lat="39.7639" data-lon="-8.9778">Marinha Grande</option>
-                    <option value="Portimão" data-lat="37.1390" data-lon="-8.5376">Portimão</option>
-                    <!-- Principais cidades europeias -->
-                    <option value="Londres" data-lat="51.5074" data-lon="-0.1278">Londres</option>
-                    <option value="Paris" data-lat="48.8566" data-lon="2.3522">Paris</option>
-                    <option value="Berlim" data-lat="52.5200" data-lon="13.4050">Berlim</option>
-                    <option value="Madrid" data-lat="40.4168" data-lon="-3.7038">Madrid</option>
-                    <option value="Roma" data-lat="41.9028" data-lon="12.4964">Roma</option>
-                    <option value="Amsterdã" data-lat="52.3676" data-lon="4.9041">Amsterdã</option>
-                    <option value="Bruxelas" data-lat="50.8503" data-lon="4.3517">Bruxelas</option>
-                    <option value="Atenas" data-lat="37.9838" data-lon="23.7275">Atenas</option>
-                    <option value="Budapeste" data-lat="47.4979" data-lon="19.0402">Budapeste</option>
-                    <option value="Viena" data-lat="48.2082" data-lon="16.3738">Viena</option>
-                    <option value="Zurique" data-lat="47.3784" data-lon="8.5400">Zurique</option>
-                    <option value="Copenhague" data-lat="55.6761" data-lon="12.5683">Copenhague</option>
-                    <option value="Oslo" data-lat="59.9127" data-lon="10.7461">Oslo</option>
-                    <option value="Estocolmo" data-lat="59.3293" data-lon="18.0686">Estocolmo</option>
-                    <option value="Helsinque" data-lat="60.1699" data-lon="24.9384">Helsinque</option>
-                    <option value="Praga" data-lat="50.0755" data-lon="14.4378">Praga</option>
-                    <option value="Amsterdã" data-lat="52.3676" data-lon="4.9041">Amsterdã</option>
-                    <option value="Budapeste" data-lat="47.4979" data-lon="19.0402">Budapeste</option>
-                    <option value="Warsaw" data-lat="52.2298" data-lon="21.0118">Warsaw</option>
-                    <option value="Barcelona" data-lat="41.3851" data-lon="2.1734">Barcelona</option>
-                    <option value="Munique" data-lat="48.1351" data-lon="11.5820">Munique</option>
-                    <option value="Milão" data-lat="45.4642" data-lon="9.1900">Milão</option>
-                    <option value="Lviv" data-lat="49.8397" data-lon="24.0297">Lviv</option>
-                    <option value="Sarajevo" data-lat="43.8486" data-lon="18.3564">Sarajevo</option>
-                    <option value="Belgrado" data-lat="44.8176" data-lon="20.4633">Belgrado</option>
-                    <option value="Zagreb" data-lat="45.8131" data-lon="15.978">Zagreb</option>
-                    <option value="Bratislava" data-lat="48.1482" data-lon="17.1067">Bratislava</option>
-                    <option value="Riga" data-lat="56.946" data-lon="24.1059">Riga</option>
-                    <option value="Tallinn" data-lat="59.437" data-lon="24.7535">Tallinn</option>
-                    <option value="Vilnius" data-lat="54.6892" data-lon="25.2798">Vilnius</option>
-                    <option value="Sofia" data-lat="42.6975" data-lon="23.3242">Sofia</option>
-                    <option value="Skopje" data-lat="41.9981" data-lon="21.4254">Skopje</option>
-                    <option value="Tirana" data-lat="41.3275" data-lon="19.8189">Tirana</option>
-                    <option value="Bucareste" data-lat="44.4268" data-lon="26.1025">Bucareste</option>
-                    <option value="Podgorica" data-lat="42.4411" data-lon="19.2636">Podgorica</option>
-                    <option value="Pristina" data-lat="42.6722" data-lon="21.1685">Pristina</option>
-                    <option value="Chisinau" data-lat="47.0105" data-lon="28.8638">Chisinau</option>
-                    <option value="Skopje" data-lat="41.9981" data-lon="21.4254">Skopje</option>
-    
-                    <!-- Principais cidades fora da Europa -->
-                    <option value="Nova Iorque" data-lat="40.7128" data-lon="-74.0060">Nova Iorque</option>
-                    <option value="Los Angeles" data-lat="34.0522" data-lon="-118.2437">Los Angeles</option>
-                    <option value="Tóquio" data-lat="35.6762" data-lon="139.6503">Tóquio</option>
-                    <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
-                    <option value="Pequim" data-lat="39.9042" data-lon="116.4074">Pequim</option>
-                    <option value="Sidney" data-lat="-33.8688" data-lon="151.2093">Sidney</option>
-                    <option value="Buenos Aires" data-lat="-34.6037" data-lon="-58.3816">Buenos Aires</option>
-                    <option value="Moscovo" data-lat="55.7558" data-lon="37.6173">Moscovo</option>
-                    <option value="México" data-lat="19.4326" data-lon="-99.1332">México</option>
-                    <option value="Mumbai" data-lat="19.0760" data-lon="72.8777">Mumbai</option>
-                    <option value="Cairo" data-lat="30.0444" data-lon="31.2357">Cairo</option>
-                    <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
-                    <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
-                    <option value="Seul" data-lat="37.5665" data-lon="126.9780">Seul</option>
-                    <option value="São Petersburgo" data-lat="59.9343" data-lon="30.3351">São Petersburgo</option>
-                    <option value="Rio de Janeiro" data-lat="-22.9068" data-lon="-43.1729">Rio de Janeiro</option>
-                    <option value="Los Angeles" data-lat="34.0522" data-lon="-118.2437">Los Angeles</option>
-                    <option value="Kuala Lumpur" data-lat="3.1390" data-lon="101.6869">Kuala Lumpur</option>
-                    <option value="Lima" data-lat="-12.0464" data-lon="-77.0428">Lima</option>
-                    <option value="Bangkok" data-lat="13.7563" data-lon="100.5018">Bangkok</option>
-                    <option value="Dubai" data-lat="25.276987" data-lon="55.296249">Dubai</option>
-                    <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
-                    <option value="Karachi" data-lat="24.8607" data-lon="67.0011">Karachi</option>
-                    <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
-                    <option value="Hong Kong" data-lat="22.3193" data-lon="114.1694">Hong Kong</option>
-                    <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
-                    <option value="Cairo" data-lat="30.0444" data-lon="31.2357">Cairo</option>
-                    <option value="Melbourne" data-lat="-37.8136" data-lon="144.9631">Melbourne</option>
-                    <option value="Bangkok" data-lat="13.7563" data-lon="100.5018">Bangkok</option>
-                    <option value="Santiago" data-lat="-33.4489" data-lon="-70.6693">Santiago</option>
-                    <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
-                    <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
-                    <option value="Manila" data-lat="14.5995" data-lon="120.9842">Manila</option>
-                    <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
-                    <option value="Mumbai" data-lat="19.0760" data-lon="72.8777">Mumbai</option>
-                    <option value="New Delhi" data-lat="28.6139" data-lon="77.2090">New Delhi</option>
-                    <option value="Toronto" data-lat="43.6532" data-lon="-79.3832">Toronto</option>
-                    <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
-                    <option value="Singapore" data-lat="1.3521" data-lon="103.8198">Singapore</option>
-                    <option value="Bangalore" data-lat="12.9716" data-lon="77.5946">Bangalore</option>
-                    <option value="Riyadh" data-lat="24.7136" data-lon="46.6753">Riyadh</option>
-                    <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
-                    <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
-                    <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
-                    <option value="Chicago" data-lat="41.8781" data-lon="-87.6298">Chicago</option>
-                    <option value="Houston" data-lat="29.7604" data-lon="-95.3698">Houston</option>
-                    <option value="Dallas" data-lat="32.7767" data-lon="-96.7970">Dallas</option>
-                    <option value="Philadelphia" data-lat="39.9526" data-lon="-75.1652">Philadelphia</option>
-                    <option value="San Francisco" data-lat="37.7749" data-lon="-122.4194">San Francisco</option>
-                    <option value="Miami" data-lat="25.7617" data-lon="-80.1918">Miami</option>
-                    <option value="Atlanta" data-lat="33.7490" data-lon="-84.3880">Atlanta</option>
-                    <option value="Toronto" data-lat="43.651070" data-lon="-79.347015">Toronto</option>
-                    <option value="Vancouver" data-lat="49.2827" data-lon="-123.1207">Vancouver</option>
-                    <option value="Montreal" data-lat="45.5017" data-lon="-73.5673">Montreal</option>
-                    <option value="Bogotá" data-lat="4.7110" data-lon="-74.0721">Bogotá</option>
-                    <option value="Lima" data-lat="-12.0464" data-lon="-77.0428">Lima</option>
-                    <option value="Santiago" data-lat="-33.4489" data-lon="-70.6693">Santiago</option>
-                    <option value="Caracas" data-lat="10.4806" data-lon="-66.9036">Caracas</option>
-                    <option value="San Juan" data-lat="18.4655" data-lon="-66.1057">San Juan</option>
-                    <option value="Havana" data-lat="23.1136" data-lon="-82.3666">Havana</option>
-                    <option value="Casablanca" data-lat="33.5731" data-lon="-7.5898">Casablanca</option>
-                    <option value="Nairobi" data-lat="-1.2864" data-lon="36.8172">Nairobi</option>
-                    <option value="Abuja" data-lat="9.0579" data-lon="7.4951">Abuja</option>
-                    <option value="Johannesburg" data-lat="-26.2041" data-lon="28.0473">Johannesburg</option>
-                    <option value="Addis Ababa" data-lat="9.0039" data-lon="38.7636">Addis Ababa</option>
-                    <option value="Algiers" data-lat="36.7538" data-lon="3.0588">Algiers</option>
-                    <option value="Rabat" data-lat="34.0209" data-lon="-6.8417">Rabat</option>
-                    <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
-                    <option value="Bamako" data-lat="12.6392" data-lon="-8.0029">Bamako</option>
-                    <option value="Kigali" data-lat="-1.9706" data-lon="30.1044">Kigali</option>
-                    <option value="Dakar" data-lat="14.7167" data-lon="-17.4677">Dakar</option>
-                    <option value="Accra" data-lat="5.6037" data-lon="-0.1870">Accra</option>
-                    <option value="Antananarivo" data-lat="-18.8792" data-lon="47.5079">Antananarivo</option>
-                    <option value="Baku" data-lat="40.4093" data-lon="49.8671">Baku</option>
-                    <option value="Kuwait City" data-lat="29.3759" data-lon="47.9774">Kuwait City</option>
-                    <option value="Doha" data-lat="25.276987" data-lon="51.520008">Doha</option>
-                    <option value="Muscat" data-lat="23.5880" data-lon="58.3829">Muscat</option>
-                    <option value="Tehran" data-lat="35.6892" data-lon="51.3890">Tehran</option>
-                    <option value="Baghdad" data-lat="33.3152" data-lon="44.3661">Baghdad</option>
-                    <option value="Damascus" data-lat="33.5138" data-lon="36.2765">Damascus</option>
-                    <option value="Ankara" data-lat="39.9208" data-lon="32.8541">Ankara</option>
-                    <option value="Istanbul" data-lat="41.0082" data-lon="28.9784">Istanbul</option>
-                    <option value="Kabul" data-lat="34.5553" data-lon="69.2075">Kabul</option>
-                    <option value="Tashkent" data-lat="41.2995" data-lon="69.2401">Tashkent</option>
-                    <option value="Ashgabat" data-lat="37.9601" data-lon="58.3261">Ashgabat</option>
-                    <option value="Bishkek" data-lat="42.8746" data-lon="74.5698">Bishkek</option>
-                    <option value="Colombo" data-lat="6.9271" data-lon="79.8612">Colombo</option>
-                    <option value="Dhaka" data-lat="23.8103" data-lon="90.4125">Dhaka</option>
-                    <option value="Karachi" data-lat="24.8607" data-lon="67.0011">Karachi</option>
-                    <option value="Bangalore" data-lat="12.9716" data-lon="77.5946">Bangalore</option>
-                    <option value="Ho Chi Minh City" data-lat="10.8231" data-lon="106.6297">Ho Chi Minh City</option>
-                    <option value="Hanoi" data-lat="21.0285" data-lon="105.8542">Hanoi</option>
-                    <option value="Taipei" data-lat="25.0330" data-lon="121.5654">Taipei</option>
-                    <option value="Shanghai" data-lat="31.2304" data-lon="121.4737">Shanghai</option>
-                    <option value="Chongqing" data-lat="29.5630" data-lon="106.5516">Chongqing</option>
-                    <option value="Guangzhou" data-lat="23.1291" data-lon="113.2644">Guangzhou</option>
-                    <option value="Shenzhen" data-lat="22.5431" data-lon="114.0579">Shenzhen</option>
-                    <option value="Beijing" data-lat="39.9042" data-lon="116.4074">Beijing</option>
-                    <option value="Seoul" data-lat="37.5665" data-lon="126.9780">Seoul</option>
-                    <option value="Osaka" data-lat="34.6937" data-lon="135.5023">Osaka</option>
-                    <option value="Nagoya" data-lat="35.1815" data-lon="136.9066">Nagoya</option>
-                    <option value="Kobe" data-lat="34.6901" data-lon="135.1955">Kobe</option>
-                    <option value="Auckland" data-lat="-36.8485" data-lon="174.7633">Auckland</option>
-                    <option value="Wellington" data-lat="-41.2865" data-lon="174.7762">Wellington</option>
-                    <option value="Perth" data-lat="-31.9505" data-lon="115.8605">Perth</option>
-                    <option value="Brisbane" data-lat="-27.4698" data-lon="153.0251">Brisbane</option>
-                    <option value="Canberra" data-lat="-35.2809" data-lon="149.1300">Canberra</option>
-                    <option value="Phoenix" data-lat="33.4484" data-lon="-112.0740">Phoenix</option>
-                    <option value="San Diego" data-lat="32.7157" data-lon="-117.1611">San Diego</option>
-                    <option value="Detroit" data-lat="42.3314" data-lon="-83.0458">Detroit</option>
-                    <option value="Denver" data-lat="39.7392" data-lon="-104.9903">Denver</option>
-                    <option value="Boston" data-lat="42.3601" data-lon="-71.0589">Boston</option>
-                    <option value="Calgary" data-lat="51.0447" data-lon="-114.0719">Calgary</option>
-                    <option value="Edmonton" data-lat="53.5461" data-lon="-113.4938">Edmonton</option>
-                    <option value="Quebec City" data-lat="46.8139" data-lon="-71.2082">Quebec City</option>
-                    <option value="Guadalajara" data-lat="20.6597" data-lon="-103.3496">Guadalajara</option>
-                    <option value="Monterrey" data-lat="25.6866" data-lon="-100.3161">Monterrey</option>
-                    <option value="Puebla" data-lat="19.0414" data-lon="-98.2063">Puebla</option>
-                    <option value="San José" data-lat="9.9281" data-lon="-84.0907">San José</option>
-                    <option value="Panama City" data-lat="8.9824" data-lon="-79.5199">Panama City</option>
-                    <option value="San Salvador" data-lat="13.6929" data-lon="-89.2182">San Salvador</option>
-                    <option value="Managua" data-lat="12.1364" data-lon="-86.2514">Managua</option>
-                    <option value="Port-au-Prince" data-lat="18.5944" data-lon="-72.3074">Port-au-Prince</option>
-                    <option value="Cali" data-lat="3.4516" data-lon="-76.5320">Cali</option>
-                    <option value="Medellín" data-lat="6.2442" data-lon="-75.5812">Medellín</option>
-                    <option value="Barranquilla" data-lat="10.9685" data-lon="-74.7813">Barranquilla</option>
-                    <option value="La Paz" data-lat="-16.4897" data-lon="-68.1193">La Paz</option>
-                    <option value="Sucre" data-lat="-19.0196" data-lon="-65.2619">Sucre</option>
-                    <option value="Quito" data-lat="-0.1807" data-lon="-78.4678">Quito</option>
-                    <option value="Guayaquil" data-lat="-2.1709" data-lon="-79.9224">Guayaquil</option>
-                    <option value="Georgetown" data-lat="6.8013" data-lon="-58.1551">Georgetown</option>
-                    <option value="Paramaribo" data-lat="5.8520" data-lon="-55.2038">Paramaribo</option>
-                    <option value="Freetown" data-lat="8.4657" data-lon="-13.2317">Freetown</option>
-                    <option value="Monrovia" data-lat="6.3156" data-lon="-10.8074">Monrovia</option>
-                    <option value="Conakry" data-lat="9.6412" data-lon="-13.5784">Conakry</option>
-                    <option value="Libreville" data-lat="0.4162" data-lon="9.4673">Libreville</option>
-                    <option value="Yaoundé" data-lat="3.8480" data-lon="11.5021">Yaoundé</option>
-                    <option value="Douala" data-lat="4.0511" data-lon="9.7679">Douala</option>
-                    <option value="Kinshasa" data-lat="-4.4419" data-lon="15.2663">Kinshasa</option>
-                    <option value="Lusaka" data-lat="-15.3875" data-lon="28.3228">Lusaka</option>
-                    <option value="Harare" data-lat="-17.8252" data-lon="31.0335">Harare</option>
-                    <option value="Dar es Salaam" data-lat="-6.7924" data-lon="39.2083">Dar es Salaam</option>
-                    <option value="Maputo" data-lat="-25.9692" data-lon="32.5732">Maputo</option>
-                    <option value="Amman" data-lat="31.9454" data-lon="35.9284">Amman</option>
-                    <option value="Beirut" data-lat="33.8938" data-lon="35.5018">Beirut</option>
-                    <option value="Manama" data-lat="26.2235" data-lon="50.5876">Manama</option>
-                    <option value="Riyadh" data-lat="24.7136" data-lon="46.6753">Riyadh</option>
-                    <option value="Jeddah" data-lat="21.4858" data-lon="39.1925">Jeddah</option>
-                    <option value="Mecca" data-lat="21.3891" data-lon="39.8579">Mecca</option>
-                    <option value="Medina" data-lat="24.5247" data-lon="39.5692">Medina</option>
-                    <option value="Tbilisi" data-lat="41.7151" data-lon="44.8271">Tbilisi</option>
-                    <option value="Yerevan" data-lat="40.1792" data-lon="44.4991">Yerevan</option>
-                    <option value="Kathmandu" data-lat="27.7172" data-lon="85.3240">Kathmandu</option>
-                    <option value="Lucknow" data-lat="26.8467" data-lon="80.9462">Lucknow</option>
-                    <option value="Hyderabad" data-lat="17.3850" data-lon="78.4867">Hyderabad</option>
-                    <option value="Ahmedabad" data-lat="23.0225" data-lon="72.5714">Ahmedabad</option>
-                    <option value="Pune" data-lat="18.5204" data-lon="73.8567">Pune</option>
-                    <option value="Bandung" data-lat="-6.9147" data-lon="107.6098">Bandung</option>
-                    <option value="Surabaya" data-lat="-7.2575" data-lon="112.7521">Surabaya</option>
-                    <option value="Medan" data-lat="3.5952" data-lon="98.6722">Medan</option>
-                    <option value="Kuala Lumpur" data-lat="3.1390" data-lon="101.6869">Kuala Lumpur</option>
-                    <option value="Penang" data-lat="5.4164" data-lon="100.3327">Penang</option>
-                    <option value="Adelaide" data-lat="-34.9285" data-lon="138.6007">Adelaide</option>
-                    <option value="Gold Coast" data-lat="-28.0167" data-lon="153.4000">Gold Coast</option>
-        </select>
-        <button id="submitBtn">Descobrir Mapa Astral</button>
-      </div>
+          <label for="birthcity">Cidade de Nascimento:</label>
+          <select id="birthcity" name="birthcity" required>
+            <option value="Lisboa" data-lat="38.7169" data-lon="-9.1395">Lisboa</option>
+            <option value="Porto" data-lat="41.1496" data-lon="-8.6110">Porto</option>
+            <option value="Amadora" data-lat="38.7333" data-lon="-9.2333">Amadora</option>
+            <option value="Braga" data-lat="41.5503" data-lon="-8.4265">Braga</option>
+            <option value="Coimbra" data-lat="40.2033" data-lon="-8.4103">Coimbra</option>
+            <option value="Aveiro" data-lat="40.6405" data-lon="-8.6538">Aveiro</option>
+            <option value="Viseu" data-lat="40.6613" data-lon="-7.9092">Viseu</option>
+            <option value="Évora" data-lat="38.5715" data-lon="-7.9135">Évora</option>
+            <option value="Funchal" data-lat="32.6669" data-lon="-16.9243">Funchal</option>
+            <option value="Leiria" data-lat="39.7439" data-lon="-8.8075">Leiria</option>
+            <option value="Santarém" data-lat="39.2368" data-lon="-8.6871">Santarém</option>
+            <option value="Albufeira" data-lat="37.0194" data-lon="-8.2437">Albufeira</option>
+            <option value="Guimarães" data-lat="41.4477" data-lon="-8.6110">Guimarães</option>
+            <option value="Viana do Castelo" data-lat="41.6922" data-lon="-8.8290">Viana do Castelo</option>
+            <option value="Cascais" data-lat="38.6979" data-lon="-9.4216">Cascais</option>
+            <option value="Oeiras" data-lat="38.6970" data-lon="-9.2998">Oeiras</option>
+            <option value="Ponta Delgada" data-lat="37.7411" data-lon="-25.6756">Ponta Delgada</option>
+            <option value="Tavira" data-lat="37.5713" data-lon="-7.6120">Tavira</option>
+            <option value="Bragança" data-lat="41.8055" data-lon="-6.7574">Bragança</option>
+            <option value="Barcelos" data-lat="41.5407" data-lon="-8.6110">Barcelos</option>
+            <option value="Vila Real" data-lat="41.3009" data-lon="-7.7443">Vila Real</option>
+            <option value="Celorico da Beira" data-lat="40.5971" data-lon="-7.6299">Celorico da Beira</option>
+            <option value="Sines" data-lat="37.9507" data-lon="-8.8693">Sines</option>
+            <option value="Caldas da Rainha" data-lat="39.4069" data-lon="-9.1333">Caldas da Rainha</option>
+            <option value="Montijo" data-lat="38.6894" data-lon="-8.9812">Montijo</option>
+            <option value="Ovar" data-lat="40.9653" data-lon="-8.5954">Ovar</option>
+            <option value="Fafe" data-lat="41.4311" data-lon="-8.3666">Fafe</option>
+            <option value="Póvoa de Varzim" data-lat="41.3795" data-lon="-8.7858">Póvoa de Varzim</option>
+            <option value="Maia" data-lat="41.1669" data-lon="-8.6200">Maia</option>
+            <option value="Barreiro" data-lat="38.6333" data-lon="-9.0667">Barreiro</option>
+            <option value="Funchal" data-lat="32.6669" data-lon="-16.9243">Funchal</option>
+            <option value="Seixal" data-lat="38.5911" data-lon="-9.0989">Seixal</option>
+            <option value="Sintra" data-lat="38.8028" data-lon="-9.3818">Sintra</option>
+            <option value="Valongo" data-lat="41.1667" data-lon="-8.9000">Valongo</option>
+            <option value="Alcobaça" data-lat="39.6031" data-lon="-8.5739">Alcobaça</option>
+            <option value="Angra do Heroísmo" data-lat="38.6634" data-lon="-27.2217">Angra do Heroísmo</option>
+            <option value="Olhão" data-lat="37.1400" data-lon="-7.8475">Olhão</option>
+            <option value="Amadora" data-lat="38.7333" data-lon="-9.2333">Amadora</option>
+            <option value="Marinha Grande" data-lat="39.7639" data-lon="-8.9778">Marinha Grande</option>
+            <option value="Portimão" data-lat="37.1390" data-lon="-8.5376">Portimão</option>
+            <!-- Principais cidades europeias -->
+            <option value="Londres" data-lat="51.5074" data-lon="-0.1278">Londres</option>
+            <option value="Paris" data-lat="48.8566" data-lon="2.3522">Paris</option>
+            <option value="Berlim" data-lat="52.5200" data-lon="13.4050">Berlim</option>
+            <option value="Madrid" data-lat="40.4168" data-lon="-3.7038">Madrid</option>
+            <option value="Roma" data-lat="41.9028" data-lon="12.4964">Roma</option>
+            <option value="Amsterdã" data-lat="52.3676" data-lon="4.9041">Amsterdã</option>
+            <option value="Bruxelas" data-lat="50.8503" data-lon="4.3517">Bruxelas</option>
+            <option value="Atenas" data-lat="37.9838" data-lon="23.7275">Atenas</option>
+            <option value="Budapeste" data-lat="47.4979" data-lon="19.0402">Budapeste</option>
+            <option value="Viena" data-lat="48.2082" data-lon="16.3738">Viena</option>
+            <option value="Zurique" data-lat="47.3784" data-lon="8.5400">Zurique</option>
+            <option value="Copenhague" data-lat="55.6761" data-lon="12.5683">Copenhague</option>
+            <option value="Oslo" data-lat="59.9127" data-lon="10.7461">Oslo</option>
+            <option value="Estocolmo" data-lat="59.3293" data-lon="18.0686">Estocolmo</option>
+            <option value="Helsinque" data-lat="60.1699" data-lon="24.9384">Helsinque</option>
+            <option value="Praga" data-lat="50.0755" data-lon="14.4378">Praga</option>
+            <option value="Amsterdã" data-lat="52.3676" data-lon="4.9041">Amsterdã</option>
+            <option value="Budapeste" data-lat="47.4979" data-lon="19.0402">Budapeste</option>
+            <option value="Warsaw" data-lat="52.2298" data-lon="21.0118">Warsaw</option>
+            <option value="Barcelona" data-lat="41.3851" data-lon="2.1734">Barcelona</option>
+            <option value="Munique" data-lat="48.1351" data-lon="11.5820">Munique</option>
+            <option value="Milão" data-lat="45.4642" data-lon="9.1900">Milão</option>
+            <option value="Lviv" data-lat="49.8397" data-lon="24.0297">Lviv</option>
+            <option value="Sarajevo" data-lat="43.8486" data-lon="18.3564">Sarajevo</option>
+            <option value="Belgrado" data-lat="44.8176" data-lon="20.4633">Belgrado</option>
+            <option value="Zagreb" data-lat="45.8131" data-lon="15.978">Zagreb</option>
+            <option value="Bratislava" data-lat="48.1482" data-lon="17.1067">Bratislava</option>
+            <option value="Riga" data-lat="56.946" data-lon="24.1059">Riga</option>
+            <option value="Tallinn" data-lat="59.437" data-lon="24.7535">Tallinn</option>
+            <option value="Vilnius" data-lat="54.6892" data-lon="25.2798">Vilnius</option>
+            <option value="Sofia" data-lat="42.6975" data-lon="23.3242">Sofia</option>
+            <option value="Skopje" data-lat="41.9981" data-lon="21.4254">Skopje</option>
+            <option value="Tirana" data-lat="41.3275" data-lon="19.8189">Tirana</option>
+            <option value="Bucareste" data-lat="44.4268" data-lon="26.1025">Bucareste</option>
+            <option value="Podgorica" data-lat="42.4411" data-lon="19.2636">Podgorica</option>
+            <option value="Pristina" data-lat="42.6722" data-lon="21.1685">Pristina</option>
+            <option value="Chisinau" data-lat="47.0105" data-lon="28.8638">Chisinau</option>
+            <option value="Skopje" data-lat="41.9981" data-lon="21.4254">Skopje</option>
 
+            <!-- Principais cidades fora da Europa -->
+            <option value="Nova Iorque" data-lat="40.7128" data-lon="-74.0060">Nova Iorque</option>
+            <option value="Los Angeles" data-lat="34.0522" data-lon="-118.2437">Los Angeles</option>
+            <option value="Tóquio" data-lat="35.6762" data-lon="139.6503">Tóquio</option>
+            <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
+            <option value="Pequim" data-lat="39.9042" data-lon="116.4074">Pequim</option>
+            <option value="Sidney" data-lat="-33.8688" data-lon="151.2093">Sidney</option>
+            <option value="Buenos Aires" data-lat="-34.6037" data-lon="-58.3816">Buenos Aires</option>
+            <option value="Moscovo" data-lat="55.7558" data-lon="37.6173">Moscovo</option>
+            <option value="México" data-lat="19.4326" data-lon="-99.1332">México</option>
+            <option value="Mumbai" data-lat="19.0760" data-lon="72.8777">Mumbai</option>
+            <option value="Cairo" data-lat="30.0444" data-lon="31.2357">Cairo</option>
+            <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
+            <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
+            <option value="Seul" data-lat="37.5665" data-lon="126.9780">Seul</option>
+            <option value="São Petersburgo" data-lat="59.9343" data-lon="30.3351">São Petersburgo</option>
+            <option value="Rio de Janeiro" data-lat="-22.9068" data-lon="-43.1729">Rio de Janeiro</option>
+            <option value="Los Angeles" data-lat="34.0522" data-lon="-118.2437">Los Angeles</option>
+            <option value="Kuala Lumpur" data-lat="3.1390" data-lon="101.6869">Kuala Lumpur</option>
+            <option value="Lima" data-lat="-12.0464" data-lon="-77.0428">Lima</option>
+            <option value="Bangkok" data-lat="13.7563" data-lon="100.5018">Bangkok</option>
+            <option value="Dubai" data-lat="25.276987" data-lon="55.296249">Dubai</option>
+            <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
+            <option value="Karachi" data-lat="24.8607" data-lon="67.0011">Karachi</option>
+            <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
+            <option value="Hong Kong" data-lat="22.3193" data-lon="114.1694">Hong Kong</option>
+            <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
+            <option value="Cairo" data-lat="30.0444" data-lon="31.2357">Cairo</option>
+            <option value="Melbourne" data-lat="-37.8136" data-lon="144.9631">Melbourne</option>
+            <option value="Bangkok" data-lat="13.7563" data-lon="100.5018">Bangkok</option>
+            <option value="Santiago" data-lat="-33.4489" data-lon="-70.6693">Santiago</option>
+            <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
+            <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
+            <option value="Manila" data-lat="14.5995" data-lon="120.9842">Manila</option>
+            <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
+            <option value="Mumbai" data-lat="19.0760" data-lon="72.8777">Mumbai</option>
+            <option value="New Delhi" data-lat="28.6139" data-lon="77.2090">New Delhi</option>
+            <option value="Toronto" data-lat="43.6532" data-lon="-79.3832">Toronto</option>
+            <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
+            <option value="Singapore" data-lat="1.3521" data-lon="103.8198">Singapore</option>
+            <option value="Bangalore" data-lat="12.9716" data-lon="77.5946">Bangalore</option>
+            <option value="Riyadh" data-lat="24.7136" data-lon="46.6753">Riyadh</option>
+            <option value="Lagos" data-lat="6.5244" data-lon="3.3792">Lagos</option>
+            <option value="Jakarta" data-lat="-6.2088" data-lon="106.8456">Jakarta</option>
+            <option value="São Paulo" data-lat="-23.5505" data-lon="-46.6333">São Paulo</option>
+            <option value="Chicago" data-lat="41.8781" data-lon="-87.6298">Chicago</option>
+            <option value="Houston" data-lat="29.7604" data-lon="-95.3698">Houston</option>
+            <option value="Dallas" data-lat="32.7767" data-lon="-96.7970">Dallas</option>
+            <option value="Philadelphia" data-lat="39.9526" data-lon="-75.1652">Philadelphia</option>
+            <option value="San Francisco" data-lat="37.7749" data-lon="-122.4194">San Francisco</option>
+            <option value="Miami" data-lat="25.7617" data-lon="-80.1918">Miami</option>
+            <option value="Atlanta" data-lat="33.7490" data-lon="-84.3880">Atlanta</option>
+            <option value="Toronto" data-lat="43.651070" data-lon="-79.347015">Toronto</option>
+            <option value="Vancouver" data-lat="49.2827" data-lon="-123.1207">Vancouver</option>
+            <option value="Montreal" data-lat="45.5017" data-lon="-73.5673">Montreal</option>
+            <option value="Bogotá" data-lat="4.7110" data-lon="-74.0721">Bogotá</option>
+            <option value="Lima" data-lat="-12.0464" data-lon="-77.0428">Lima</option>
+            <option value="Santiago" data-lat="-33.4489" data-lon="-70.6693">Santiago</option>
+            <option value="Caracas" data-lat="10.4806" data-lon="-66.9036">Caracas</option>
+            <option value="San Juan" data-lat="18.4655" data-lon="-66.1057">San Juan</option>
+            <option value="Havana" data-lat="23.1136" data-lon="-82.3666">Havana</option>
+            <option value="Casablanca" data-lat="33.5731" data-lon="-7.5898">Casablanca</option>
+            <option value="Nairobi" data-lat="-1.2864" data-lon="36.8172">Nairobi</option>
+            <option value="Abuja" data-lat="9.0579" data-lon="7.4951">Abuja</option>
+            <option value="Johannesburg" data-lat="-26.2041" data-lon="28.0473">Johannesburg</option>
+            <option value="Addis Ababa" data-lat="9.0039" data-lon="38.7636">Addis Ababa</option>
+            <option value="Algiers" data-lat="36.7538" data-lon="3.0588">Algiers</option>
+            <option value="Rabat" data-lat="34.0209" data-lon="-6.8417">Rabat</option>
+            <option value="Cape Town" data-lat="-33.9249" data-lon="18.4241">Cape Town</option>
+            <option value="Bamako" data-lat="12.6392" data-lon="-8.0029">Bamako</option>
+            <option value="Kigali" data-lat="-1.9706" data-lon="30.1044">Kigali</option>
+            <option value="Dakar" data-lat="14.7167" data-lon="-17.4677">Dakar</option>
+            <option value="Accra" data-lat="5.6037" data-lon="-0.1870">Accra</option>
+            <option value="Antananarivo" data-lat="-18.8792" data-lon="47.5079">Antananarivo</option>
+            <option value="Baku" data-lat="40.4093" data-lon="49.8671">Baku</option>
+            <option value="Kuwait City" data-lat="29.3759" data-lon="47.9774">Kuwait City</option>
+            <option value="Doha" data-lat="25.276987" data-lon="51.520008">Doha</option>
+            <option value="Muscat" data-lat="23.5880" data-lon="58.3829">Muscat</option>
+            <option value="Tehran" data-lat="35.6892" data-lon="51.3890">Tehran</option>
+            <option value="Baghdad" data-lat="33.3152" data-lon="44.3661">Baghdad</option>
+            <option value="Damascus" data-lat="33.5138" data-lon="36.2765">Damascus</option>
+            <option value="Ankara" data-lat="39.9208" data-lon="32.8541">Ankara</option>
+            <option value="Istanbul" data-lat="41.0082" data-lon="28.9784">Istanbul</option>
+            <option value="Kabul" data-lat="34.5553" data-lon="69.2075">Kabul</option>
+            <option value="Tashkent" data-lat="41.2995" data-lon="69.2401">Tashkent</option>
+            <option value="Ashgabat" data-lat="37.9601" data-lon="58.3261">Ashgabat</option>
+            <option value="Bishkek" data-lat="42.8746" data-lon="74.5698">Bishkek</option>
+            <option value="Colombo" data-lat="6.9271" data-lon="79.8612">Colombo</option>
+            <option value="Dhaka" data-lat="23.8103" data-lon="90.4125">Dhaka</option>
+            <option value="Karachi" data-lat="24.8607" data-lon="67.0011">Karachi</option>
+            <option value="Bangalore" data-lat="12.9716" data-lon="77.5946">Bangalore</option>
+            <option value="Ho Chi Minh City" data-lat="10.8231" data-lon="106.6297">Ho Chi Minh City</option>
+            <option value="Hanoi" data-lat="21.0285" data-lon="105.8542">Hanoi</option>
+            <option value="Taipei" data-lat="25.0330" data-lon="121.5654">Taipei</option>
+            <option value="Shanghai" data-lat="31.2304" data-lon="121.4737">Shanghai</option>
+            <option value="Chongqing" data-lat="29.5630" data-lon="106.5516">Chongqing</option>
+            <option value="Guangzhou" data-lat="23.1291" data-lon="113.2644">Guangzhou</option>
+            <option value="Shenzhen" data-lat="22.5431" data-lon="114.0579">Shenzhen</option>
+            <option value="Beijing" data-lat="39.9042" data-lon="116.4074">Beijing</option>
+            <option value="Seoul" data-lat="37.5665" data-lon="126.9780">Seoul</option>
+            <option value="Osaka" data-lat="34.6937" data-lon="135.5023">Osaka</option>
+            <option value="Nagoya" data-lat="35.1815" data-lon="136.9066">Nagoya</option>
+            <option value="Kobe" data-lat="34.6901" data-lon="135.1955">Kobe</option>
+            <option value="Auckland" data-lat="-36.8485" data-lon="174.7633">Auckland</option>
+            <option value="Wellington" data-lat="-41.2865" data-lon="174.7762">Wellington</option>
+            <option value="Perth" data-lat="-31.9505" data-lon="115.8605">Perth</option>
+            <option value="Brisbane" data-lat="-27.4698" data-lon="153.0251">Brisbane</option>
+            <option value="Canberra" data-lat="-35.2809" data-lon="149.1300">Canberra</option>
+            <option value="Phoenix" data-lat="33.4484" data-lon="-112.0740">Phoenix</option>
+            <option value="San Diego" data-lat="32.7157" data-lon="-117.1611">San Diego</option>
+            <option value="Detroit" data-lat="42.3314" data-lon="-83.0458">Detroit</option>
+            <option value="Denver" data-lat="39.7392" data-lon="-104.9903">Denver</option>
+            <option value="Boston" data-lat="42.3601" data-lon="-71.0589">Boston</option>
+            <option value="Calgary" data-lat="51.0447" data-lon="-114.0719">Calgary</option>
+            <option value="Edmonton" data-lat="53.5461" data-lon="-113.4938">Edmonton</option>
+            <option value="Quebec City" data-lat="46.8139" data-lon="-71.2082">Quebec City</option>
+            <option value="Guadalajara" data-lat="20.6597" data-lon="-103.3496">Guadalajara</option>
+            <option value="Monterrey" data-lat="25.6866" data-lon="-100.3161">Monterrey</option>
+            <option value="Puebla" data-lat="19.0414" data-lon="-98.2063">Puebla</option>
+            <option value="San José" data-lat="9.9281" data-lon="-84.0907">San José</option>
+            <option value="Panama City" data-lat="8.9824" data-lon="-79.5199">Panama City</option>
+            <option value="San Salvador" data-lat="13.6929" data-lon="-89.2182">San Salvador</option>
+            <option value="Managua" data-lat="12.1364" data-lon="-86.2514">Managua</option>
+            <option value="Port-au-Prince" data-lat="18.5944" data-lon="-72.3074">Port-au-Prince</option>
+            <option value="Cali" data-lat="3.4516" data-lon="-76.5320">Cali</option>
+            <option value="Medellín" data-lat="6.2442" data-lon="-75.5812">Medellín</option>
+            <option value="Barranquilla" data-lat="10.9685" data-lon="-74.7813">Barranquilla</option>
+            <option value="La Paz" data-lat="-16.4897" data-lon="-68.1193">La Paz</option>
+            <option value="Sucre" data-lat="-19.0196" data-lon="-65.2619">Sucre</option>
+            <option value="Quito" data-lat="-0.1807" data-lon="-78.4678">Quito</option>
+            <option value="Guayaquil" data-lat="-2.1709" data-lon="-79.9224">Guayaquil</option>
+            <option value="Georgetown" data-lat="6.8013" data-lon="-58.1551">Georgetown</option>
+            <option value="Paramaribo" data-lat="5.8520" data-lon="-55.2038">Paramaribo</option>
+            <option value="Freetown" data-lat="8.4657" data-lon="-13.2317">Freetown</option>
+            <option value="Monrovia" data-lat="6.3156" data-lon="-10.8074">Monrovia</option>
+            <option value="Conakry" data-lat="9.6412" data-lon="-13.5784">Conakry</option>
+            <option value="Libreville" data-lat="0.4162" data-lon="9.4673">Libreville</option>
+            <option value="Yaoundé" data-lat="3.8480" data-lon="11.5021">Yaoundé</option>
+            <option value="Douala" data-lat="4.0511" data-lon="9.7679">Douala</option>
+            <option value="Kinshasa" data-lat="-4.4419" data-lon="15.2663">Kinshasa</option>
+            <option value="Lusaka" data-lat="-15.3875" data-lon="28.3228">Lusaka</option>
+            <option value="Harare" data-lat="-17.8252" data-lon="31.0335">Harare</option>
+            <option value="Dar es Salaam" data-lat="-6.7924" data-lon="39.2083">Dar es Salaam</option>
+            <option value="Maputo" data-lat="-25.9692" data-lon="32.5732">Maputo</option>
+            <option value="Amman" data-lat="31.9454" data-lon="35.9284">Amman</option>
+            <option value="Beirut" data-lat="33.8938" data-lon="35.5018">Beirut</option>
+            <option value="Manama" data-lat="26.2235" data-lon="50.5876">Manama</option>
+            <option value="Riyadh" data-lat="24.7136" data-lon="46.6753">Riyadh</option>
+            <option value="Jeddah" data-lat="21.4858" data-lon="39.1925">Jeddah</option>
+            <option value="Mecca" data-lat="21.3891" data-lon="39.8579">Mecca</option>
+            <option value="Medina" data-lat="24.5247" data-lon="39.5692">Medina</option>
+            <option value="Tbilisi" data-lat="41.7151" data-lon="44.8271">Tbilisi</option>
+            <option value="Yerevan" data-lat="40.1792" data-lon="44.4991">Yerevan</option>
+            <option value="Kathmandu" data-lat="27.7172" data-lon="85.3240">Kathmandu</option>
+            <option value="Lucknow" data-lat="26.8467" data-lon="80.9462">Lucknow</option>
+            <option value="Hyderabad" data-lat="17.3850" data-lon="78.4867">Hyderabad</option>
+            <option value="Ahmedabad" data-lat="23.0225" data-lon="72.5714">Ahmedabad</option>
+            <option value="Pune" data-lat="18.5204" data-lon="73.8567">Pune</option>
+            <option value="Bandung" data-lat="-6.9147" data-lon="107.6098">Bandung</option>
+            <option value="Surabaya" data-lat="-7.2575" data-lon="112.7521">Surabaya</option>
+            <option value="Medan" data-lat="3.5952" data-lon="98.6722">Medan</option>
+            <option value="Kuala Lumpur" data-lat="3.1390" data-lon="101.6869">Kuala Lumpur</option>
+            <option value="Penang" data-lat="5.4164" data-lon="100.3327">Penang</option>
+            <option value="Adelaide" data-lat="-34.9285" data-lon="138.6007">Adelaide</option>
+            <option value="Gold Coast" data-lat="-28.0167" data-lon="153.4000">Gold Coast</option>
+              <!-- Adicione mais cidades se necessário -->
+          </select>
+          <button type="submit" id="submitBtn">Descobrir Mapa Astral</button>
+        </div>
+      </form>
+
+      <!-- Resultados exibidos após o envio -->
       <div class="result-container" id="result" style="display: none;">
         <h2>Posicionamento dos Astros</h2>
         <p class="planet-position" id="sunPosition">☀️ Sol: A calcular...</p>
         <p class="planet-position" id="moonPosition">🌙 Lua: A calcular...</p>
         <p class="planet-position" id="mercuryPosition">☿️ Mercúrio: A calcular...</p>
-        <p class="planet-position" id="venusPosition">♀️ Vénus: A calcular...</p>
+        <p class="planet-position" id="venusPosition">♀️ Vênus: A calcular...</p>
         <p class="planet-position" id="marsPosition">♂️ Marte: A calcular...</p>
-
-        <div id="philosophical-reflection"></div>
       </div>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 Descubra os astros do seu destino.</p>
+    <p>© 2025 Descubra os astros do seu destino. Segundo o método de Newton: para resolver a Equação de Kepler.</p>
   </footer>
 
-  <script>
-    const planetSymbols = {
-      "Sol": "☀️",
-      "Lua": "🌙",
-      "Mercúrio": "☿️",
-      "Vénus": "♀️",
-      "Marte": "♂️"
-    };
+  <!-- Carregando a biblioteca diretamente -->
+  <script src="https://cdn.jsdelivr.net/gh/commenthol/astronomia@master/dist/astronomia.bundle.js"></script>
 
-    const planetSignificance = {
-      "Sol": { "Carneiro": "Energia e liderança forte.", "Leão": "Confiança e criatividade." },
-      "Lua": { "Carneiro": "Impulsividade emocional.", "Leão": "Emoções intensas e orgulhosas." },
-      "Mercúrio": { "Carneiro": "Pensamento rápido e direto.", "Aquário": "Ideias inovadoras e excêntricas." },
-      "Vénus": { "Caranguejo": "Afeto e proteção.", "Touro": "Sensualidade e estabilidade." },
-      "Marte": { "Caranguejo": "Ação protetora e defensiva.", "Carneiro": "Impulsividade e agressividade." }
-    };
-
-    function getSignificance(planet, sign) {
-      return planetSignificance[planet]?.[sign] || "Significado em desenvolvimento.";
-    }
-
-    function generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign) {
-      return `
-        O Sol em ${sunSign} revela a sua essência, mostrando a forma como se apresenta ao mundo. A Lua em ${moonSign} expressa a profundidade das suas emoções, influenciando a forma como reage emocionalmente às circunstâncias da vida. Mercúrio em ${mercurySign} traz a chave para a sua comunicação, pensando e falando de forma única.
-        
-        Vénus em ${venusSign} fala sobre os seus valores em relação ao amor, beleza e harmonia, enquanto Marte em ${marsSign} governa as suas ações e a forma como encara desafios e adversidades. Juntos, estes planetas revelam um retrato detalhado da sua personalidade e do seu caminho, guiado pelas energias cósmicas que influenciam cada um de nós.`;
-    }
-
-    document.getElementById('submitBtn').addEventListener('click', function () {
-      const birthdate = document.getElementById('birthdate').value;
-      const birthtime = document.getElementById('birthtime').value;
-      const birthcity = document.getElementById('birthcity').value;
-
-      if (!birthdate || !birthtime || !birthcity) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-      }
-
-      const cityOption = document.querySelector(`#birthcity option[value="${birthcity}"]`);
-      const cityLat = parseFloat(cityOption.getAttribute('data-lat'));
-      const cityLon = parseFloat(cityOption.getAttribute('data-lon'));
-
-      const birthDateTime = new Date(birthdate + "T" + birthtime);
-      const referenceDate = new Date("2000-01-01T00:00:00Z");
-      const daysSinceReference = Math.floor((birthDateTime - referenceDate) / (1000 * 60 * 60 * 24));
-
-      function calculatePlanetPosition(days, cycleLength) {
-        let position = (360 / cycleLength) * days;
-        position = ((position % 360) + 360) % 360;
-        return position;
-      }
-
-      const signs = ["Carneiro", "Touro", "Gémeos", "Caranguejo", "Leão", "Virgem", "Balança", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"];
-      function getSignFromPosition(position) {
-        const signIndex = Math.floor(position / 30);
-        return signs[signIndex];
-      }
-
-      const sunPosition = calculatePlanetPosition(daysSinceReference, 365.25).toFixed(2);
-      const sunSign = getSignFromPosition(sunPosition);
-
-      const moonPosition = calculatePlanetPosition(daysSinceReference, 27.3).toFixed(2);
-      const moonSign = getSignFromPosition(moonPosition);
-
-      const mercuryPosition = calculatePlanetPosition(daysSinceReference, 87.97).toFixed(2);
-      const mercurySign = getSignFromPosition(mercuryPosition);
-
-      const venusPosition = calculatePlanetPosition(daysSinceReference, 224.7).toFixed(2);
-      const venusSign = getSignFromPosition(venusPosition);
-
-      const marsPosition = calculatePlanetPosition(daysSinceReference, 686.98).toFixed(2);
-      const marsSign = getSignFromPosition(marsPosition);
-
-      document.getElementById('sunPosition').textContent = `${planetSymbols["Sol"]} Sol: ${sunSign} - ${getSignificance('Sol', sunSign)}`;
-      document.getElementById('moonPosition').textContent = `${planetSymbols["Lua"]} Lua: ${moonSign} - ${getSignificance('Lua', moonSign)}`;
-      document.getElementById('mercuryPosition').textContent = `${planetSymbols["Mercúrio"]} Mercúrio: ${mercurySign} - ${getSignificance('Mercúrio', mercurySign)}`;
-      document.getElementById('venusPosition').textContent = `${planetSymbols["Vénus"]} Vénus: ${venusSign} - ${getSignificance('Vénus', venusSign)}`;
-      document.getElementById('marsPosition').textContent = `${planetSymbols["Marte"]} Marte: ${marsSign} - ${getSignificance('Marte', marsSign)}`;
-
-      const philosophicalReflection = generatePhilosophicalReflection(sunSign, moonSign, mercurySign, venusSign, marsSign);
-      document.getElementById('philosophical-reflection').innerHTML = philosophicalReflection;
-
-      document.getElementById('result').style.display = 'block';
-    });
-  </script>
-
+  <!-- Carregar o script de cálculo no final do HTML -->
+  <script src="script.js"></script>
 </body>
 
 </html>
