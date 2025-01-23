@@ -1,17 +1,17 @@
 const interpretacoes = {
     sol: {
-      "Carneiro": "O Sol em Carneiro representa uma força vibrante, pronta para conquistar e liderar. É o fogo inicial que impulsiona o ser a agir com coragem e determinação.",
-      "Touro": "O Sol em Touro ilumina a busca por estabilidade e apreciação das coisas simples e belas. Uma energia que valoriza a paciência e a prosperidade.",
-      "Gémeos": "O Sol em Gémeos é curioso e ágil, sempre em busca de novas ideias e conexões. A mente está sempre em movimento, pronta para aprender e comunicar.",
-      "Caranguejo": "O Sol em Caranguejo traz uma luz emocional e acolhedora. Focado na proteção e na ligação familiar, é um farol de segurança e compaixão.",
-      "Leão": "O Sol em Leão brilha intensamente com autoconfiança e criatividade. É a expressão pura do espírito que deseja ser visto e admirado.",
-      "Virgem": "O Sol em Virgem ilumina a ordem, o detalhe e a busca pela perfeição. Uma energia que traz serviço e cuidado prático ao mundo.",
-      "Balança": "O Sol em Balança busca harmonia e equilíbrio nas relações, promovendo beleza, justiça e cooperação entre os seres.",
-      "Escorpião": "O Sol em Escorpião é intenso e transformador, iluminando as profundezas emocionais e a busca por verdade.",
-      "Sagitário": "O Sol em Sagitário é aventureiro e filosófico, movido pela expansão de horizontes e pelo amor ao desconhecido.",
-      "Capricórnio": "O Sol em Capricórnio é ambicioso e perseverante, com foco em construir uma vida sólida e cheia de realizações.",
-      "Aquário": "O Sol em Aquário inspira inovação, originalidade e uma visão progressista que busca o bem coletivo.",
-      "Peixes": "O Sol em Peixes é sonhador e intuitivo, trazendo uma profunda ligação com o mundo espiritual e as emoções."
+      "Carneiro": "O Sol em Carneiro acende o espírito de um guerreiro, instigando a coragem primitiva que desafia o desconhecido. Como Heráclito disse, 'A guerra é o pai de todas as coisas', e a energia de Carneiro se manifesta na ação direta, no impulso para a mudança e a superação das adversidades.",
+      "Touro": "O Sol em Touro irradia uma calma sólida, evocando a busca pela beleza duradoura e pela terra firme. Aristóteles afirmou que a felicidade reside na contemplação da beleza natural, e Touro, com sua apreciação pela simplicidade, busca viver de acordo com este princípio, cultivando serenidade e abundância.",
+      "Gémeos": "O Sol em Gémeos é a chama da curiosidade e da comunicação incessante. Platão falava sobre a importância do diálogo como meio de entendimento, e o geminiano, com sua mente ágil, vê no conhecimento e na troca intelectual a chave para desvendar os mistérios da existência.",
+      "Caranguejo": "O Sol em Caranguejo é a luz que aquece os laços afetivos e a memória ancestral. A filosofia de Confúcio revela que 'onde há amor, há vida', e o Caranguejo, regido pelo coração, encontra sua força na proteção e na profunda conexão com suas raízes e com os outros.",
+      "Leão": "O Sol em Leão é a expressão do eu no seu esplendor. Nietzsche, em sua busca pelo 'Übermensch', buscava a liberdade e a criação do próprio destino, e Leão, com seu brilho natural, é aquele que se ergue, desafiando o mundo a reconhecê-lo e a aplaudir sua essência única.",
+      "Virgem": "O Sol em Virgem é a luz que encontra perfeição no detalhamento e na ordem. Na busca platônica pela verdade e harmonia, Virgem reflete o desejo de transformar o mundo com a precisão da razão e o cuidado do serviço, enxergando a beleza no que é simples e prático.",
+      "Balança": "O Sol em Balança busca a verdade na harmonia das relações. Aristóteles falava sobre o 'justo meio', e Balança, com sua sensibilidade à estética e à justiça, busca o equilíbrio entre os opostos, onde a beleza e a equidade se entrelaçam para criar paz e entendimento.",
+      "Escorpião": "O Sol em Escorpião é a força da transformação, um mergulho profundo nas águas sombrias da alma. A filosofia de Kierkegaard fala da 'angústia existencial', e Escorpião, com sua intensidade, busca a verdade nos recantos mais profundos do ser, desafiando as sombras e buscando o renascimento.",
+      "Sagitário": "O Sol em Sagitário é a chama da liberdade, da busca incessante por sabedoria e aventura. Como disse Rainer Maria Rilke, 'Viver significa buscar'. O sagitariano, com sua alma expansiva, é um eterno peregrino da verdade, que se aventura sem medo nas vastidões do desconhecido.",
+      "Capricórnio": "O Sol em Capricórnio é a luz da perseverança e da responsabilidade. O filósofo Lao Tzu ensinou que 'um homem de verdade é forte como uma rocha', e Capricórnio, com seu foco e disciplina, constrói o futuro com a paciência dos que sabem que nada de valor é conquistado sem esforço.",
+      "Aquário": "O Sol em Aquário ilumina o caminho da inovação e do progresso coletivo. Como Rousseau acreditava, a liberdade é o pilar da humanidade, e Aquário, com sua visão futurista, busca transformar o mundo para o bem comum, sempre à frente de seu tempo, inspirado pela ideia de uma nova utopia.",
+      "Peixes": "O Sol em Peixes é o mergulho no mistério da alma e do cosmos. 'O mundo é uma alma', dizia Platão, e Peixes, com sua conexão profunda com o espiritual e o emocional, traz uma energia que flui entre as dimensões do ser, buscando compreender os mistérios da vida através da empatia e da intuição."
     },
     lua: {
         "Carneiro": "A Lua em Carneiro é impulsiva e emocionalmente ativa. A necessidade de ação e novidade guia os sentimentos, fazendo com que a pessoa reaja de forma intensa e espontânea às emoções.",
