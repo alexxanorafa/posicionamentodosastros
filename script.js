@@ -10,16 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const planetas = {
-    sol: { periodo: 365.25636, deslocamentoInicial: 280.147, excentricidade: 0.0167 },
-    lua: { periodo: 27.321661, deslocamentoInicial: 218.316, excentricidade: 0.0549 },
-    mercurio: { periodo: 87.969, deslocamentoInicial: 77.456, excentricidade: 0.2056 },
-    venus: { periodo: 224.701, deslocamentoInicial: 131.564, excentricidade: 0.0067 },
-    marte: { periodo: 686.971, deslocamentoInicial: 336.040, excentricidade: 0.0934 },
-    jupiter: { periodo: 4332.59, deslocamentoInicial: 14.753, excentricidade: 0.0489 },
-    saturno: { periodo: 10759.22, deslocamentoInicial: 92.431, excentricidade: 0.0565 },
-    urano: { periodo: 30687.15, deslocamentoInicial: 170.964, excentricidade: 0.0463 },
-    neptuno: { periodo: 60190.03, deslocamentoInicial: 44.971, excentricidade: 0.0097 },
-    plutao: { periodo: 90560, deslocamentoInicial: 224.066, excentricidade: 0.2488 }
+    sol: { periodo: 365.256363004, deslocamentoInicial: 280.147, excentricidade: 0.0167086 },
+    lua: { periodo: 27.321582, deslocamentoInicial: 218.316, excentricidade: 0.0549 },
+    mercurio: { periodo: 87.96934963, deslocamentoInicial: 77.45645, excentricidade: 0.205635 },
+    venus: { periodo: 224.70069, deslocamentoInicial: 131.563703, excentricidade: 0.006772 },
+    marte: { periodo: 686.980, deslocamentoInicial: 336.04084, excentricidade: 0.093405 },
+    jupiter: { periodo: 4332.589, deslocamentoInicial: 14.75385, excentricidade: 0.048498 },
+    saturno: { periodo: 10759.22, deslocamentoInicial: 92.43194, excentricidade: 0.055546 },
+    urano: { periodo: 30685.4, deslocamentoInicial: 170.96424, excentricidade: 0.0457 },
+    neptuno: { periodo: 60189.0, deslocamentoInicial: 44.97135, excentricidade: 0.009456 },
+    plutao: { periodo: 90560.0, deslocamentoInicial: 224.06676, excentricidade: 0.248807 }
   };
 
   // Função utilitária para normalizar valores angulares entre 0 e 360 graus
@@ -37,14 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Função para calcular o número de dias desde 01-01-2000
-  function diasDesde2000(data) {
-    const refDate = new Date("2000-01-01T00:00:00Z");
+  // Função para calcular o número de dias desde 01-01-1900
+  function diasDesde1900(data) {
+    const refDate = new Date("1900-01-01T00:00:00Z");
     return (data - refDate) / (1000 * 60 * 60 * 24);
   }
 
   // Função para resolver a Equação de Kepler com alta precisão usando Newton-Raphson
-  function resolverEquacaoKepler(M, excentricidade, tolerancia = 1e-12, maxIteracoes = 1000) {
+  function resolverEquacaoKepler(M, excentricidade, tolerancia = 1e-14, maxIteracoes = 2000) {
     let E = M; // Aproximação inicial para Anomalia Exêntrica
     let deltaE;
     let iteracoes = 0;
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Função para calcular a posição do planeta com base em seus parâmetros orbitais
   function calcularPosicaoPlaneta(planeta, data) {
     const params = planetas[planeta];
-    const dias = diasDesde2000(data);
+    const dias = diasDesde1900(data);
 
     // Anomalia Média (M)
     let M = (2 * Math.PI * dias / params.periodo) % (2 * Math.PI);
