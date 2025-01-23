@@ -27,13 +27,50 @@ document.addEventListener("DOMContentLoaded", () => {
     return ((angulo % 360) + 360) % 360;
   }
 
-  // Preenche o dropdown de cidades
+  // Preenche o dropdown de cidades (otimizado)
   function preencherDropdown(cidades) {
-    cidades.forEach(cidade => {
+    // Ordenar cidades alfabeticamente pelo nome
+    const cidadesOrdenadas = [...cidades].sort((a, b) => a.cidade.localeCompare(b.cidade));
+
+    // Limpar o dropdown antes de preenchê-lo
+    birthplaceSelect.innerHTML = "";
+
+    // Adicionar cidades ao dropdown
+    cidadesOrdenadas.forEach(cidade => {
       const option = document.createElement("option");
       option.value = JSON.stringify(cidade);
       option.textContent = cidade.cidade;
       birthplaceSelect.appendChild(option);
+    });
+
+    // Criar e adicionar funcionalidade de autocompletar
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Digite a cidade...";
+    input.id = "autocompleteInput";
+    birthplaceSelect.parentNode.insertBefore(input, birthplaceSelect);
+
+    input.addEventListener("input", () => {
+      const valorFiltro = input.value.toLowerCase();
+
+      // Filtrar as cidades que correspondem ao valor digitado
+      const cidadesFiltradas = cidadesOrdenadas.filter(cidade =>
+        cidade.cidade.toLowerCase().includes(valorFiltro)
+      );
+
+      // Atualizar o dropdown com as cidades filtradas
+      birthplaceSelect.innerHTML = "";
+      cidadesFiltradas.forEach(cidade => {
+        const option = document.createElement("option");
+        option.value = JSON.stringify(cidade);
+        option.textContent = cidade.cidade;
+        birthplaceSelect.appendChild(option);
+      });
+
+      // Se houver uma cidade exata que corresponda ao input, selecioná-la automaticamente
+      if (cidadesFiltradas.length === 1) {
+        birthplaceSelect.value = JSON.stringify(cidadesFiltradas[0]);
+      }
     });
   }
 
