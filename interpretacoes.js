@@ -110,8 +110,7 @@ const interpretacoes = {
       "Capricórnio": "A compaixão encontra solidez em gestos reais e duradouros.",
       "Aquário": "Os ideais fluem, inspirando visões que tocam o coletivo.",
       "Peixes": "A intuição dissolve fronteiras, conectando-se ao todo."
-    }
-    const interpretacoes = {
+    },
     plutao: {
         "Carneiro": "A transformação nasce do fogo interior, destruindo para recriar.",
         "Touro": "A renovação é lenta e profunda, enraizada naquilo que é essencial.",
