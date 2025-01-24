@@ -22,67 +22,28 @@ document.addEventListener("DOMContentLoaded", () => {
     plutao: { periodo: 90560.0, deslocamentoInicial: 224.06676, excentricidade: 0.248807 }
   };
 
-  // Função utilitária para normalizar valores angulares entre 0 e 360 graus
   function normalizarGraus(angulo) {
     return ((angulo % 360) + 360) % 360;
   }
 
-  // Preenche o dropdown de cidades (otimizado)
   function preencherDropdown(cidades) {
-    // Ordenar cidades alfabeticamente pelo nome
     const cidadesOrdenadas = [...cidades].sort((a, b) => a.cidade.localeCompare(b.cidade));
-
-    // Limpar o dropdown antes de preenchê-lo
     birthplaceSelect.innerHTML = "";
-
-    // Adicionar cidades ao dropdown
     cidadesOrdenadas.forEach(cidade => {
       const option = document.createElement("option");
       option.value = JSON.stringify(cidade);
       option.textContent = cidade.cidade;
       birthplaceSelect.appendChild(option);
     });
-
-    // Criar e adicionar funcionalidade de autocompletar
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Digite a cidade...";
-    input.id = "autocompleteInput";
-    birthplaceSelect.parentNode.insertBefore(input, birthplaceSelect);
-
-    input.addEventListener("input", () => {
-      const valorFiltro = input.value.toLowerCase();
-
-      // Filtrar as cidades que correspondem ao valor digitado
-      const cidadesFiltradas = cidadesOrdenadas.filter(cidade =>
-        cidade.cidade.toLowerCase().includes(valorFiltro)
-      );
-
-      // Atualizar o dropdown com as cidades filtradas
-      birthplaceSelect.innerHTML = "";
-      cidadesFiltradas.forEach(cidade => {
-        const option = document.createElement("option");
-        option.value = JSON.stringify(cidade);
-        option.textContent = cidade.cidade;
-        birthplaceSelect.appendChild(option);
-      });
-
-      // Se houver uma cidade exata que corresponda ao input, selecioná-la automaticamente
-      if (cidadesFiltradas.length === 1) {
-        birthplaceSelect.value = JSON.stringify(cidadesFiltradas[0]);
-      }
-    });
   }
 
-  // Função para calcular o número de dias desde 01-01-1900
   function diasDesde1900(data) {
     const refDate = new Date("1900-01-01T00:00:00Z");
     return (data - refDate) / (1000 * 60 * 60 * 24);
   }
 
-  // Função para resolver a Equação de Kepler com alta precisão usando Newton-Raphson
   function resolverEquacaoKepler(M, excentricidade, tolerancia = 1e-14, maxIteracoes = 2000) {
-    let E = M; // Aproximação inicial para Anomalia Exêntrica
+    let E = M;
     let deltaE;
     let iteracoes = 0;
 
@@ -99,14 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return E;
   }
 
-  // Função para calcular a posição do planeta com base em seus parâmetros orbitais
   function calcularPosicaoPlaneta(planeta, data) {
     const params = planetas[planeta];
     const dias = diasDesde1900(data);
 
-    // Anomalia Média (M)
-    let M = (2 * Math.PI * dias / params.periodo) % (2 * Math.PI);
-    if (M < 0) M += 2 * Math.PI; // Garantir que M esteja entre 0 e 2π
+    // Anomalia Média (M) com ajuste para maior exatidão
+    let M = ((2 * Math.PI * dias) / params.periodo + (params.deslocamentoInicial * Math.PI) / 180) % (2 * Math.PI);
+    if (M < 0) M += 2 * Math.PI;
 
     // Resolver Equação de Kepler para obter Anomalia Exêntrica (E)
     const E = resolverEquacaoKepler(M, params.excentricidade);
@@ -117,26 +77,20 @@ document.addEventListener("DOMContentLoaded", () => {
       Math.sqrt(1 - params.excentricidade) * Math.cos(E / 2)
     );
 
-    // Ajustar para deslocamento inicial e converter para graus
-    const deslocamentoInicialRad = (params.deslocamentoInicial * Math.PI) / 180;
-    const vCorrigido = v + deslocamentoInicialRad;
-    const graus = normalizarGraus((vCorrigido * 180) / Math.PI);
-
+    // Ajustar para o deslocamento inicial e converter para graus
+    const graus = normalizarGraus((v * 180) / Math.PI);
     return graus;
   }
 
-  // Função para determinar o signo com base no ângulo
   function determinarSigno(grau) {
     const indice = Math.floor(grau / 30);
     return signos[indice];
   }
 
-  // Função para gerar a interpretação do planeta em um determinado signo
   function gerarInterpretacao(planeta, signo) {
     return interpretacoes[planeta]?.[signo] || "Interpretação não disponível.";
   }
 
-  // Função para calcular posições de todos os planetas
   function calcularPosicoes(data) {
     return Object.keys(planetas).map((planeta) => {
       const posicao = calcularPosicaoPlaneta(planeta, data);
@@ -146,11 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Evento de envio do formulário
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Obter os valores do formulário
     const birthdate = form.querySelector("#birthdate").value;
     const birthtime = form.querySelector("#birthtime").value;
     const birthplace = form.querySelector("#birthplace").value;
@@ -169,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const localNascimento = JSON.parse(birthplace);
     console.log("Coordenadas do local de nascimento:", localNascimento);
 
-    // Calcular posições dos planetas e gerar interpretações
     const posicoes = calcularPosicoes(birthDateTime);
 
     let resultadosHTML = "<h2>Posicionamento dos Astros</h2>";
@@ -188,6 +139,5 @@ document.addEventListener("DOMContentLoaded", () => {
     resultContainer.style.display = "block";
   });
 
-  // Carregar cidades diretamente do array em cidades.js
   preencherDropdown(cidades);
 });
